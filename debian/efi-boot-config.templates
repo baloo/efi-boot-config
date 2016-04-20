@@ -1,0 +1,4 @@
+Template: efi-boot-config/root-dev
+Type: string
+Description: What is your root device
+ This can be either UUID="" or /dev/sda1 or /dev/mapper/ format

@@ -1,0 +1,27 @@
+#!/bin/sh
+
+set -e
+set -u
+
+. /etc/default/efi-boot-config
+
+version="$1"
+
+kernel="/boot/efi/EFI/debian/vmlinuz-${version}"
+initrd="/boot/efi/EFI/debian/initrd.img-${version}"
+
+[ ! -e "${kernel}" ] || rm "${kernel}"
+[ ! -e "${initrd}" ] || rm "${initrd}"
+
+bootentry=$(efibootmgr -v | while read entry debian ver rest; do
+	case "${debian} ${ver}" in
+		"Debian ${version}")
+			bootentry="${entry}"
+			bootentry="${bootentry#Boot}"
+			echo "${bootentry%\*}"
+			exit 0
+			;;
+	esac
+done)
+
+[ "${bootentry}" = "" ] || efibootmgr -b "${bootentry}" -B

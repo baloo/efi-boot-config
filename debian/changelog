@@ -1,0 +1,5 @@
+efi-boot-config (0.1) unstable; urgency=medium
+
+  * Initial release (Closes: #nnnn)
+
+ -- Arthur Gautier <baloo@gandi.net>  Wed, 20 Apr 2016 01:28:02 +0000

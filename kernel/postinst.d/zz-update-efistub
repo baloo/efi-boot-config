@@ -1,0 +1,60 @@
+#!/bin/sh
+
+set -e
+set -u
+
+. /etc/default/efi-boot-config
+
+version="$1"
+
+if [ "${ROOT_DEV}" = "" ]; then
+	echo "E: ROOT_DEV configuration is required in /etc/default/efi-boot-config" >&2
+	exit 1
+fi
+
+kernel="/boot/vmlinuz-${version}"
+initrd="/boot/initrd.img-${version}"
+
+if [ ! -e "${kernel}" ]; then
+	echo "E: kernel is not found (expected ${kernel})" >&2
+	exit 1
+fi
+
+if [ ! -e "${initrd}" ]; then
+	echo "E: initrd is not found (expected ${initrd})" >&2
+	exit 1
+fi
+
+if [ -n "${SB_PRIVATE_KEY:-""}" -a -n "${SB_PUBLIC_CERT:-""}" ]; then
+	sbsign 	--key "${SB_PRIVATE_KEY}" \
+		--cert "${SB_PUBLIC_CERT}" \
+		--output "/boot/efi/EFI/debian/vmlinuz-${version}" \
+		"${kernel}"
+else
+	cp "${kernel}" "/boot/efi/EFI/debian/vmlinuz-${version}"
+fi
+
+cp "${initrd}" "/boot/efi/EFI/debian/initrd-${version}"
+
+bootentry=$(efibootmgr -v | while read entry debian ver rest; do
+	case "${debian} ${ver}" in
+		"Debian ${version}")
+			bootentry="${entry}"
+			bootentry="${bootentry#Boot}"
+			echo "${bootentry%\*}"
+			exit 0
+			;;
+	esac
+done)
+
+if [ "${bootentry}" != "" ]; then
+	command="-b ${bootentry}"
+	efibootmgr ${command} -B
+else
+	command=""
+fi
+
+efibootmgr ${command} -c -g \
+	-L "Debian ${version}" \
+	-l "\EFI\debian\vmlinuz-${version}" \
+	-u "initrd=\\EFI\\debian\\initrd-${version} root=${ROOT_DEV} ro quiet add_efi_memmap"

@@ -1,0 +1,13 @@
+Source: efi-boot-config
+Section: utils
+Priority: optional
+Maintainer: Arthur Gautier <baloo@gandi.net>
+Build-Depends: debhelper (>=9)
+Standards-Version: 3.9.6
+Homepage: https://github.com/baloo/efi-boot-config
+
+Package: efi-boot-config
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}, efibootmgr, util-linux
+Description: Configures kernel for EFI
+ Configures kernel for EFI and sign
