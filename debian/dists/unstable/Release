@@ -1,0 +1,17 @@
+Date: Wed, 20 Apr 2016 06:23:55 UTC
+MD5Sum:
+ 237509901ef79b021714811552c7ea21               36 Release
+ 2cebb44cd37cb1af9c070adbee2dbb13              557 main/binary-amd64/Packages
+ e171dd7cb487af2b340bd3cb4d68af56              819 main/binary-amd64/Packages.gpg
+SHA1:
+ 983c62d8f2b1a4149815a832922f871f83924e0e               36 Release
+ 681ca2d9cf5e4b424c655cfa083c9643add4493a              557 main/binary-amd64/Packages
+ 27586ac0effc8791681bc29d6faedff0cb57357b              819 main/binary-amd64/Packages.gpg
+SHA256:
+ dc57ace93dcc8153e7f16e02a7b368a014bae686610c4ac493e0413d3d2df275               36 Release
+ e2a777d55d33079625097dbf66b753c67bead713d1305b8251c711e06c306599              557 main/binary-amd64/Packages
+ 94898dbde45c09b8abb6da064a7e2a177341f6b07f0bbf1f15669d6432d02b2b              819 main/binary-amd64/Packages.gpg
+SHA512:
+ 11ab3d279157b1e76820a10321294fb2aa8bcce88301eb14822499c5a510722035be6fb68d74c06ef0cb02abd6abddbd58e97e1d4c931670699bdad22e6ede90               36 Release
+ 01b1e984389a89bc5a8dc918b79515cff493fe5d63c3389ef0131909b3c94ce7cf866a17feebd3f9af6ee6612c359da41e9b69106fb37d1f7e76ee85181491ed              557 main/binary-amd64/Packages
+ 9ce4b15e0ca640db62e837be1af8b454bbe1e425e95df836c2c25be8ae64c49736ac28ac2a0233dad3a474c23749df615f0fa4ff24763be9910a45c38801810c              819 main/binary-amd64/Packages.gpg

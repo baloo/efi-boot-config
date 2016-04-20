@@ -1,0 +1,17 @@
+Package: efi-boot-config
+Version: 0.1
+Architecture: all
+Maintainer: Arthur Gautier <baloo@gandi.net>
+Installed-Size: 25
+Depends: debconf (>= 0.5) | debconf-2.0, efibootmgr, util-linux
+Filename: ./efi-boot-config_0.1_all.deb
+Size: 3746
+MD5sum: af736a908184a5f8a1ad522595268848
+SHA1: 5888a6a1802c02955196cea832d28708dad65018
+SHA256: a2fc2b3a52b211916046bf73f60bec97c420a81d1aa13b88ab30a6ea304428c4
+Section: utils
+Priority: optional
+Homepage: https://github.com/baloo/efi-boot-config
+Description: Configures kernel for EFI
+ Configures kernel for EFI and sign
+
